@@ -33,13 +33,16 @@ namespace GB_Employees_pmmson
 
             // загружаем данные
             a = new Main();
+
+            this.DataContext = a;
+
             a.LoadDepartment();
             a.LoadEmployee();
 
             // связываем отображение с данными 
-            // TODO: перенести в ресурсы возможно? Пока не разобрлася как это сделать...
-            listDepartments.ItemsSource = a.Departments;
-            listEmployees.ItemsSource = a.Employees;
+            // TODO: перенести в ресурсы возможно? Пока не разобрлася как это сделать... - через DataContext!
+            //listDepartments.ItemsSource = a.Departments;
+            //listEmployees.ItemsSource = a.Employees;
 
             // TODO: как в XAML указать кол-во ? но итоговую реализацию хочу перенести в заголовок окна, возможно ? какое используется свойство ?
             lblCountDep.Content = a.CountDepart.ToString(); 

@@ -5,18 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GB_Employees_pmmson"
         mc:Ignorable="d"
-        Title="Сотрудник L2.6" Height="500" Width="1000">
-    <Window.Resources>
-        <local:Main x:Key="Main"/>
-    </Window.Resources>
+        Title="Сотрудник L2.6" Height="500" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView 
+        <ListView
             HorizontalAlignment="Left" 
             Height="330" 
             Margin="10,115,0,0" 
             VerticalAlignment="Top" 
             Width="497"
             Name = "listEmployees"
+            ItemsSource="{Binding Employees}"
             SelectionMode="Single">
             <ListView.View>
                 <GridView>
@@ -33,6 +31,7 @@
             Margin="10,40,485,0" 
             VerticalAlignment="Top"
             Name="listDepartments"
+            ItemsSource="{Binding Departments}"
             SelectionChanged="ListDepartments_SelectionChanged"
             Height="22"
             DisplayMemberPath="NameDepart"/>
@@ -54,7 +53,7 @@
             Height="30" 
             Margin="640,145,0,0" 
             TextWrapping="Wrap" 
-            Text="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}" 
+            Text="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart, UpdateSourceTrigger=PropertyChanged}" 
             VerticalAlignment="Top" 
             Width="195" 
             FontSize="15"/>
@@ -99,9 +98,9 @@
             Height="30" 
             FontSize="15" 
             Click="BtnDel_Click"/>
-        <Label Content="Кол-во департаментов:" HorizontalAlignment="Left" Margin="512,360,0,69"/>
-        <Label Content="Кол-во сотрудников:" HorizontalAlignment="Left" Margin="512,405,0,24"/>
-        <Label Name="lblCountDep" Content="" HorizontalAlignment="Left" Margin="655,360,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblCountEmp" Content="" HorizontalAlignment="Left" Margin="642,405,0,0" VerticalAlignment="Top"/>
+        <Label Content="Кол-во департаментов:" HorizontalAlignment="Left" Margin="515,405,0,24"/>
+        <Label Content="Кол-во сотрудников:" HorizontalAlignment="Left" Margin="720,405,0,24"/>
+        <Label Name="lblCountDep" Content="" HorizontalAlignment="Left" Margin="658,405,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblCountEmp" Content="" HorizontalAlignment="Left" Margin="850,405,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
