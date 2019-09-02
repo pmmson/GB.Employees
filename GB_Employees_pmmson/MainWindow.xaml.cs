@@ -68,7 +68,7 @@ namespace GB_Employees_pmmson
         private void BtnApply_Click(object sender, RoutedEventArgs e)
         {
             // TODO: если департаменты совпадают, то сотрудники должны быть в том же департаменте ?
-            // TODO: что должна делать данная кнопка, если обновление коллекции реализована через XAML (при потери фокуса Text по связке изменил источник) ?        
+            // TODO: что должна делать данная кнопка, если обновление коллекции реализована через XAML (при потери фокуса Text по связке изменил источник) ?
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)

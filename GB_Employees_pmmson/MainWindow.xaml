@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:GB_Employees_pmmson"
         mc:Ignorable="d"
         Title="Сотрудник L2.6" Height="500" Width="1000">
-
+    <Window.Resources>
+        <local:Main x:Key="Main"/>
+    </Window.Resources>
     <Grid>
         <ListView 
             HorizontalAlignment="Left" 
@@ -16,7 +18,6 @@
             Width="497"
             Name = "listEmployees"
             SelectionMode="Single">
-            <!--ItemsSource="{Binding ElementName=listDepartments, Path=SelectedItem.IdDepart}"-->
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=ID}">ID</GridViewColumn>
@@ -32,7 +33,7 @@
             Margin="10,40,485,0" 
             VerticalAlignment="Top"
             Name="listDepartments"
-            SelectionChanged="ListDepartments_SelectionChanged" 
+            SelectionChanged="ListDepartments_SelectionChanged"
             Height="22"
             DisplayMemberPath="NameDepart"/>
         <Label Content="Редактировать выбранный департамент" Margin="515,80,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
