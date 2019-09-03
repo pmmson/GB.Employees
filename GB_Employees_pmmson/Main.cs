@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GB_Employees_pmmson
 {
-    class Main
+    class Main : INotifyPropertyChanged
     {
         ObservableCollection<Employee> employees;
         ObservableCollection<Department> departments;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Employee> Employees { get => employees; set => employees = value; }
         public ObservableCollection<Department> Departments { get => departments; set => departments = value; }
@@ -45,6 +48,7 @@ namespace GB_Employees_pmmson
             {
                 int id = departments[departments.Count - 1].IdDepart + 1;
                 departments.Add(new Department(id, nameDepart));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountDepart)));
             }
         }
         
@@ -56,6 +60,8 @@ namespace GB_Employees_pmmson
                 {
                     DelEmpl(departments[i].IdDepart);
                     departments.Remove(departments[i]);
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountEmpl)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountDepart)));
                 }
             }
         }
