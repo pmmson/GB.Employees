@@ -40,7 +40,7 @@ namespace GB_Employees_pmmson
             a.LoadDepartment();
             a.LoadEmployee();
 
-            // TODO: реализацию хочу перенести в заголовок окна, возможно ? какое используется свойство ?
+            // TODO: реализацию подсчета кол-ва сотрудников и департаментов хочу перенести в заголовок окна, возможно ? какое используется свойство ?
 
         }
 
@@ -50,17 +50,20 @@ namespace GB_Employees_pmmson
             // TODO: вывод всех сотрудников - (all) ?
             // TODO: лист сотрудников без департамента ?
 
+
+            // Solution Sergeya
+            //listEmpl.ItemsSource = data.EmployeesDb.Where(
+            //    w => w.DepartamentId == (cmbDept.SelectedValue as Department)?.DepartmentId
+            //    );
+
+            // TODO: не работает обновление при удалении или добавлении сотрудника
             ComboBox comboBox = (ComboBox)sender;
             Department selectedItem = (Department)comboBox.SelectedItem;
-
-            ObservableCollection<Employee> selectedEmployees = new ObservableCollection<Employee>();
-
-            foreach (Employee employee in a.Employees)
-            {
-                if (employee.IdDepart == selectedItem?.IdDepart) selectedEmployees.Add(employee);
-            }
-
-            listEmployees.ItemsSource = selectedEmployees;
+           
+            listEmployees.ItemsSource = from employee in a.Employees
+                                        where employee.IdDepart == selectedItem?.IdDepart
+                                        select employee;
+            
         }
 
         private void BtnApply_Click(object sender, RoutedEventArgs e)
@@ -82,12 +85,15 @@ namespace GB_Employees_pmmson
 
         private void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
         {
-
+            a.AddEmpl(txtAddEmplName.Text, txtAddEmplAge.Text, txtAddEmplDep.Text);
+            txtAddEmplName.Text = "";
+            txtAddEmplAge.Text = "";
+            txtAddEmplDep.Text = "";
         }
 
         private void BtnDelEmpl_Click(object sender, RoutedEventArgs e)
         {
-
+            a.DelEmpl(txtDelEmplName.Text);
         }
     }
 }

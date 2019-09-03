@@ -17,5 +17,7 @@ namespace GB_Employees_pmmson
 
         public string NameDepart { get; set; }
         public int IdDepart { get; set; }
+        
+        
     }
 }

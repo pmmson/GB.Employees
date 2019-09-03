@@ -21,7 +21,8 @@
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=ID}">ID</GridViewColumn>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Path=Name}">ФИО</GridViewColumn>
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=Age}">Возраст</GridViewColumn>
-                    <GridViewColumn Width="270" DisplayMemberBinding="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}">Департамент</GridViewColumn>
+                    <GridViewColumn Width="110" DisplayMemberBinding="{Binding Path=IdDepart}">ID Департамента</GridViewColumn>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}">Департамент</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -36,16 +37,15 @@
             Height="22"
             DisplayMemberPath="NameDepart"/>
         <Label Content="Редактировать выбранный департамент" Margin="515,80,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Департамент:" Margin="515,115,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="110" HorizontalAlignment="Left"/>
         <TextBox 
             Name="txtDepName" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="615,115,0,0" 
+            Margin="515,115,0,0" 
             TextWrapping="Wrap" 
             Text="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart, UpdateSourceTrigger=PropertyChanged}" 
             VerticalAlignment="Top" 
-            Width="220" 
+            Width="320" 
             FontSize="15"/>
         <Label Content="Добавить новый департамент" Margin="515,5,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
         <TextBox 
@@ -82,45 +82,45 @@
         <Label Content="Кол-во сотрудников:" HorizontalAlignment="Left" Margin="720,405,0,24"/>
         <Label Name="lblCountDep" Content="{Binding CountDepart, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Left" Margin="658,405,0,0" VerticalAlignment="Top"/>
         <Label Name="lblCountEmp" Content="{Binding CountEmpl, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Left" Margin="850,405,0,0" VerticalAlignment="Top"/>
-        <Label Content="Добавить или редактировать сотрудника" Margin="515,180,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Добавить нового сотрудника" Margin="515,180,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
         <TextBox 
             x:Name="txtAddEmplName" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="515,241,0,0" 
+            Margin="599,215,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="153" 
+            Width="236" 
             FontSize="15"/>
-        <Label Content="ФИО" HorizontalAlignment="Left" Margin="515,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="512,219,0,0" VerticalAlignment="Top" Width="40"/>
         <TextBox 
             x:Name="txtAddEmplAge" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="673,241,0,0" 
+            Margin="906,214,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="153" 
+            Width="54" 
             FontSize="15"/>
-        <Label Content="Возраст" HorizontalAlignment="Left" Margin="673,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Возраст" HorizontalAlignment="Left" Margin="848,215,0,0" VerticalAlignment="Top"/>
         <TextBox 
             x:Name="txtAddEmplDep" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="831,241,0,0" 
+            Margin="599,250,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="153" 
+            Width="236" 
             FontSize="15"/>
-        <Label Content="Департамент" HorizontalAlignment="Left" Margin="831,210,0,0" VerticalAlignment="Top"/>
+        <Label Content="Департамент" HorizontalAlignment="Left" Margin="512,254,0,0" VerticalAlignment="Top"/>
         <Button 
             Name="btnAddEmpl_Click" 
             Content="Добавить" 
             HorizontalAlignment="Left" 
-            Margin="515,290,0,0" 
+            Margin="840,249,0,0" 
             VerticalAlignment="Top" 
             Width="120" 
             Height="30" 
@@ -130,11 +130,45 @@
             Name="btnDelEmpl_Click" 
             Content="Удалить" 
             HorizontalAlignment="Left" 
-            Margin="862,290,0,0" 
+            Margin="840,346,0,0" 
             VerticalAlignment="Top" 
             Width="120" 
             Height="30" 
             FontSize="15" 
             Click="BtnDelEmpl_Click"/>
+        <Label Content="Редактировать выбранного сотрудника" Margin="512,284,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <TextBox 
+            x:Name="txtDelEmplName" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="599,311,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ElementName=listEmployees, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="236" 
+            FontSize="15"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="512,315,0,0" VerticalAlignment="Top" Width="40"/>
+        <TextBox 
+            x:Name="txtDelEmplAge" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="906,311,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ElementName=listEmployees, Path=SelectedItem.Age, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="54" 
+            FontSize="15"/>
+        <Label Content="Возраст" HorizontalAlignment="Left" Margin="848,311,0,0" VerticalAlignment="Top"/>
+        <TextBox 
+            x:Name="txtDelEmplDep" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="599,346,0,0" 
+            TextWrapping="Wrap" 
+            Text="{Binding ElementName=listEmployees, Path=SelectedItem.IdDepart, UpdateSourceTrigger=PropertyChanged}" 
+            VerticalAlignment="Top" 
+            Width="236" 
+            FontSize="15"/>
+        <Label Content="Департамент" HorizontalAlignment="Left" Margin="512,346,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
