@@ -36,47 +36,27 @@
             Height="22"
             DisplayMemberPath="NameDepart"/>
         <Label Content="Редактировать выбранный департамент" Margin="515,80,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Департамент:" Margin="515,110,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="110" HorizontalAlignment="Left"/>
-        <Label 
-            Content="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}" 
-            Name="lblDepName" 
-            Margin="640,110,0,0" 
-            VerticalAlignment="Top" 
-            FontSize="15" 
-            Height="30" 
-            Width="195" 
-            HorizontalAlignment="Left"/>
-        <Label Content="новое название:" Margin="515,145,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="125" HorizontalAlignment="Left"/>
+        <Label Content="Департамент:" Margin="515,115,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="110" HorizontalAlignment="Left"/>
         <TextBox 
             Name="txtDepName" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="640,145,0,0" 
+            Margin="615,115,0,0" 
             TextWrapping="Wrap" 
             Text="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart, UpdateSourceTrigger=PropertyChanged}" 
             VerticalAlignment="Top" 
-            Width="195" 
+            Width="220" 
             FontSize="15"/>
-        <Button 
-            Name="btnApply_Click" 
-            Content="Переименовать" 
-            HorizontalAlignment="Left" 
-            Margin="840,145,0,0" 
-            VerticalAlignment="Top" 
-            Width="120" 
-            Height="30" 
-            FontSize="15" 
-            Click="BtnApply_Click"/>
         <Label Content="Добавить новый департамент" Margin="515,5,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
         <TextBox 
             x:Name="txtAddDepName" 
             HorizontalAlignment="Left" 
             Height="30" 
-            Margin="525,40,0,0" 
+            Margin="515,40,0,0" 
             TextWrapping="Wrap" 
             Text="" 
             VerticalAlignment="Top" 
-            Width="230" 
+            Width="320" 
             FontSize="15"/>
         <Button 
             Name="btnAdd_Click" 
@@ -92,7 +72,7 @@
             Name="btnDel_Click" 
             Content="Удалить" 
             HorizontalAlignment="Left" 
-            Margin="840,110,0,0" 
+            Margin="840,115,0,0" 
             VerticalAlignment="Top" 
             Width="120" 
             Height="30" 
@@ -100,7 +80,61 @@
             Click="BtnDel_Click"/>
         <Label Content="Кол-во департаментов:" HorizontalAlignment="Left" Margin="515,405,0,24"/>
         <Label Content="Кол-во сотрудников:" HorizontalAlignment="Left" Margin="720,405,0,24"/>
-        <Label Name="lblCountDep" Content="" HorizontalAlignment="Left" Margin="658,405,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblCountEmp" Content="" HorizontalAlignment="Left" Margin="850,405,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblCountDep" Content="{Binding CountDepart, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Left" Margin="658,405,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblCountEmp" Content="{Binding CountEmpl, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Left" Margin="850,405,0,0" VerticalAlignment="Top"/>
+        <Label Content="Добавить или редактировать сотрудника" Margin="515,180,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="470" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <TextBox 
+            x:Name="txtAddEmplName" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="515,241,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="153" 
+            FontSize="15"/>
+        <Label Content="ФИО" HorizontalAlignment="Left" Margin="515,210,0,0" VerticalAlignment="Top"/>
+        <TextBox 
+            x:Name="txtAddEmplAge" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="673,241,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="153" 
+            FontSize="15"/>
+        <Label Content="Возраст" HorizontalAlignment="Left" Margin="673,210,0,0" VerticalAlignment="Top"/>
+        <TextBox 
+            x:Name="txtAddEmplDep" 
+            HorizontalAlignment="Left" 
+            Height="30" 
+            Margin="831,241,0,0" 
+            TextWrapping="Wrap" 
+            Text="" 
+            VerticalAlignment="Top" 
+            Width="153" 
+            FontSize="15"/>
+        <Label Content="Департамент" HorizontalAlignment="Left" Margin="831,210,0,0" VerticalAlignment="Top"/>
+        <Button 
+            Name="btnAddEmpl_Click" 
+            Content="Добавить" 
+            HorizontalAlignment="Left" 
+            Margin="515,290,0,0" 
+            VerticalAlignment="Top" 
+            Width="120" 
+            Height="30" 
+            FontSize="15" 
+            Click="BtnAddEmpl_Click"/>
+        <Button 
+            Name="btnDelEmpl_Click" 
+            Content="Удалить" 
+            HorizontalAlignment="Left" 
+            Margin="862,290,0,0" 
+            VerticalAlignment="Top" 
+            Width="120" 
+            Height="30" 
+            FontSize="15" 
+            Click="BtnDelEmpl_Click"/>
     </Grid>
 </Window>

@@ -48,6 +48,7 @@ namespace GB_Employees_pmmson
             {
                 int id = departments[departments.Count - 1].IdDepart + 1;
                 departments.Add(new Department(id, nameDepart));
+
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountDepart)));
             }
         }
@@ -60,7 +61,7 @@ namespace GB_Employees_pmmson
                 {
                     DelEmpl(departments[i].IdDepart);
                     departments.Remove(departments[i]);
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountEmpl)));
+                    
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountDepart)));
                 }
             }
@@ -72,6 +73,8 @@ namespace GB_Employees_pmmson
             {
                 if (employees[i].IdDepart == idDepart) employees.Remove(employees[i]);
             }
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.CountEmpl)));
         }
     }
 }

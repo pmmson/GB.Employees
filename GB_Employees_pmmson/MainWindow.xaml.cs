@@ -34,19 +34,14 @@ namespace GB_Employees_pmmson
             // загружаем данные
             a = new Main();
 
+            // связь отображения и данных
             this.DataContext = a;
 
             a.LoadDepartment();
             a.LoadEmployee();
 
-            // связываем отображение с данными 
-            // TODO: перенести в ресурсы возможно? Пока не разобрлася как это сделать... - через DataContext!
-            //listDepartments.ItemsSource = a.Departments;
-            //listEmployees.ItemsSource = a.Employees;
+            // TODO: реализацию хочу перенести в заголовок окна, возможно ? какое используется свойство ?
 
-            // TODO: как в XAML указать кол-во ? но итоговую реализацию хочу перенести в заголовок окна, возможно ? какое используется свойство ?
-            lblCountDep.Content = a.CountDepart.ToString(); 
-            lblCountEmp.Content = a.CountEmpl.ToString();
         }
 
         private void ListDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,15 +73,21 @@ namespace GB_Employees_pmmson
         {
             a.AddDep(txtAddDepName.Text);
             txtAddDepName.Text = "";
-            lblCountDep.Content = a.CountDepart.ToString(); //
-            lblCountEmp.Content = a.CountEmpl.ToString(); //
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            a.DelDep(lblDepName.Content.ToString());
-            lblCountDep.Content = a.CountDepart.ToString(); //
-            lblCountEmp.Content = a.CountEmpl.ToString(); //
+            a.DelDep(txtDepName.Text);
+        }
+
+        private void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDelEmpl_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
