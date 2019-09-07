@@ -45,7 +45,11 @@ namespace GB_Employees_pmmson
 
         public object EmployeeSelectItem => dtGrid.SelectedItem;
 
-        public object DepartmentSelectItem => listDepartments.SelectedItem;
+        public object DepartmentSelectItem
+        {
+            get { return listDepartments.SelectedItem; }
+            set { listDepartments.SelectedItem = value; }
+        }
 
         public MainWindow()
         {
@@ -54,6 +58,7 @@ namespace GB_Employees_pmmson
 
             p = new Presenter(this);
 
+            p.Load();
 
             // выбираем сотрудников выбранного департамента
             listDepartments.SelectionChanged += delegate { p.DepartmentSelectionChanged(); };
@@ -72,8 +77,8 @@ namespace GB_Employees_pmmson
                 if (a.DialogResult == true)
                 {
                     p.AddDep(a.addDepName.Text);
+                    listDepartments.SelectedIndex = listDepartments.Items.Count - 1;
                 }
-
             };
 
             // добавляем нового сотрудника
@@ -81,6 +86,7 @@ namespace GB_Employees_pmmson
             {
                 var a = new AddEmpl();
                 a.Depart.ItemsSource = DepartmentsComBox;
+                a.Depart.SelectedItem = DepartmentSelectItem;
                 a.ShowDialog();
                 if (a.DialogResult == true)
                 {
@@ -92,11 +98,12 @@ namespace GB_Employees_pmmson
             btnEditDep.Click += delegate
             {
                 var a = new EditDep();
-                a.oldDepName.Text = (listDepartments.SelectedItem as Department).NameDepart;
+                a.oldDepName.Text = (DepartmentSelectItem as Department).NameDepart;
                 a.ShowDialog();
                 if (a.DialogResult == true)
                 {
                     p.EditDep(a.oldDepName.Text, a.newDepName.Text);
+                    listDepartments.Items.Refresh();
                 }
             };
 

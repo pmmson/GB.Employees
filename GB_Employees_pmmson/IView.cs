@@ -12,7 +12,7 @@ namespace GB_Employees_pmmson
         IEnumerable EmployeesDtGrid { get; set; }
         IEnumerable DepartmentsComBox { get; set; }
         string TitleWindow { get; set; }
-        object DepartmentSelectItem { get; }
+        object DepartmentSelectItem { get; set; }
         object EmployeeSelectItem { get; }
 
     }

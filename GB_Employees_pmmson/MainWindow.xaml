@@ -10,10 +10,10 @@
         <TextBlock Text="Департаменты" Margin="10,5,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="320" HorizontalAlignment="Left" FontWeight="Bold"/>
         <TextBlock Text="Сотрудники департамента" HorizontalAlignment="Left" Margin="10,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="15"/>
         <TextBlock x:Name="txtDelDepName" HorizontalAlignment="Left" Margin="209,115,0,0" TextWrapping="Wrap" Text="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}" VerticalAlignment="Top" Width="81" Height="20" FontSize="15" FontWeight="Bold"/>
-        <ComboBox x:Name="listDepartments" Margin="10,40,10,0" VerticalAlignment="Top" Height="22" DisplayMemberPath="NameDepart"/>
+        <ComboBox x:Name="listDepartments" SelectedIndex="0" Margin="10,40,10,0" VerticalAlignment="Top" Height="22" DisplayMemberPath="NameDepart"/>
         <Button Name="btnDelDep" Content="Удалить" HorizontalAlignment="Left" Margin="360,80,0,0" VerticalAlignment="Top" Width="100" Height="22" FontSize="15"/>
-        <!--DataGrid x:Name="dtGrid" HorizontalAlignment="Left" Height="292" Margin="10,140,0,0" VerticalAlignment="Top" Width="472"/-->
-        <ListView x:Name="dtGrid" HorizontalAlignment="Left" Height="292" Margin="10,140,0,0" VerticalAlignment="Top" Width="472">
+        <DataGrid x:Name="dtGrid" HorizontalAlignment="Left" Height="292" Margin="10,140,0,0" VerticalAlignment="Top" Width="472"/>
+        <!--ListView x:Name="dtGrid" HorizontalAlignment="Left" Height="292" Margin="10,140,0,0" VerticalAlignment="Top" Width="472">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" DisplayMemberBinding="{Binding Path=ID}">ID</GridViewColumn>
@@ -23,7 +23,7 @@
                     <GridViewColumn Width="160" DisplayMemberBinding="{Binding ElementName=listDepartments, Path=SelectedItem.NameDepart}">Департамент</GridViewColumn>
                 </GridView>
             </ListView.View>
-        </ListView>
+        </-->
         <Button x:Name="btnDelEmpl" Content="Удалить" HorizontalAlignment="Left" Margin="360,445,0,0" VerticalAlignment="Top" Width="100" Height="22" FontSize="15"/>
         <Button Name="btnAddDep" Content="Добавить" HorizontalAlignment="Left" Margin="25,80,0,0" VerticalAlignment="Top" Width="100" Height="22" FontSize="15"/>
         <Button x:Name="btnAddEmpl" Content="Добавить" HorizontalAlignment="Left" Margin="25,445,0,0" VerticalAlignment="Top" Width="100" Height="22" FontSize="15"/>

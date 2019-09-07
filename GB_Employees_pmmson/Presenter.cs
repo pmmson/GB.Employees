@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -16,33 +17,32 @@ namespace GB_Employees_pmmson
         {
             this.view = view;
             model = new Model();
-
+        }
+        /// <summary>
+        /// загрузка данных
+        /// </summary>
+        public void Load()
+        {
             model.Load();
 
-            this.view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
-            this.view.EmployeesDtGrid = model.Employees;
-            this.view.DepartmentsComBox = model.Departments;
-            
-
+            view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            view.DepartmentsComBox = model.Departments;
+            view.EmployeesDtGrid = model.Employees.Where(w => w.IdDepart == ((Department)view.DepartmentSelectItem)?.IdDepart);
         }
         /// <summary>
         /// выбранный департамент
         /// </summary>
         public void DepartmentSelectionChanged()
         {
-            Department selectedItem = (Department)this.view.DepartmentSelectItem;
-
-            this.view.EmployeesDtGrid = from employee in model.Employees
-                                        where employee.IdDepart == selectedItem?.IdDepart
-                                        select employee;
+            view.EmployeesDtGrid = model.Employees.Where(w => w.IdDepart == ((Department)view.DepartmentSelectItem)?.IdDepart);
         }
         /// <summary>
         /// удаление выбранного департамента с сотрудниками
         /// </summary>
         public void DelDep()
         {
-            model.DelDep(((Department)this.view.DepartmentSelectItem).IdDepart);
-            this.view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            model.DelDep(((Department)view.DepartmentSelectItem).IdDepart);
+            view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
             // TODO: можно ли изменение название окна (кол-ва департаментов и сотрудников) реализовать не так как я сделал через копипаст строки в двух методах ?
         }
         /// <summary>
@@ -50,8 +50,9 @@ namespace GB_Employees_pmmson
         /// </summary>
         public void DelEmpl()
         {
-            model.DelEmplById(((Employee)this.view.EmployeeSelectItem).ID);
-            this.view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            model.DelEmplById(((Employee)view.EmployeeSelectItem).ID);
+
+            view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
 
             // TODO: не работает обновление при удалении сотрудника
         }
@@ -62,7 +63,8 @@ namespace GB_Employees_pmmson
         public void AddDep(string depName)
         {
             model.AddDep(depName);
-            this.view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            
         }
         /// <summary>
         /// добавление нового сотрудника
@@ -73,7 +75,8 @@ namespace GB_Employees_pmmson
         public void AddEmpl(string emplName, string emplAge, int idDepart)
         {
             model.AddEmpl(emplName, emplAge, idDepart);
-            this.view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            view.TitleWindow = $"Сотрудник L2.6 | департаментов:{model.CountDepart} | сотрудников:{model.CountEmpl}";
+            
         }
         /// <summary>
         /// редактирование названия департамента

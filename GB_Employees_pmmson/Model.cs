@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace GB_Employees_pmmson
 {
-    class Model : INotifyPropertyChanged
+    class Model
     {
-        ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
-        ObservableCollection<Department> departments= new ObservableCollection<Department>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        ObservableCollection<Employee> employees;
+        ObservableCollection<Department> departments;
 
         public ObservableCollection<Employee> Employees
         {
@@ -21,19 +20,23 @@ namespace GB_Employees_pmmson
             set
             {
                 employees = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.employees)));
             }
         }
+
         public ObservableCollection<Department> Departments
         {
             get => departments;
-            set => departments = value;
+            set
+            {
+                departments = value;
+            }
         }
-        /// <summary>
-        /// загружаем данные в память
-        /// </summary>
+
         public void Load()
         {
+            employees = new ObservableCollection<Employee>();
+            departments = new ObservableCollection<Department>();
+
             Random r = new Random();
 
             for (int i = 0; i < 100; i++)
@@ -71,19 +74,18 @@ namespace GB_Employees_pmmson
 
         public void DelEmplByIdDepart(int idDepart)
         {
-            for (int i = employees.Count - 1; i >= 0; i--)
+            for (int i = Employees.Count - 1; i >= 0; i--)
             {
-                if (employees[i].IdDepart == idDepart) employees.Remove(employees[i]);
+                if (Employees[i].IdDepart == idDepart) Employees.Remove(Employees[i]);
             }
         }
 
         public void DelEmplById(int id)
         {
-            for (int i = employees.Count - 1; i >= 0; i--)
+            for (int i = Employees.Count - 1; i >= 0; i--)
             {
-                if (employees[i].ID == id) employees.Remove(employees[i]);
+                if (Employees[i].ID == id) Employees.Remove(Employees[i]);
             }
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.employees)));
         }
 
         public void AddDep(string nameDepart)
@@ -100,7 +102,7 @@ namespace GB_Employees_pmmson
             if (name != "" && age != "")
             {
                 int idEmpl = employees[employees.Count - 1].ID + 1;
-                employees.Add(new Employee(idEmpl, name, Int32.Parse(age), idDepart));
+                Employees.Add(new Employee(idEmpl, name, Int32.Parse(age), idDepart));
             }
         }
 
