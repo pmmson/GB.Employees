@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace GB_Employees_pmmson
 {
-    class Model
+    class Model : INotifyPropertyChanged
     {
 
         ObservableCollection<Employee> employees;
         ObservableCollection<Department> departments;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Employee> Employees
         {
@@ -20,6 +22,7 @@ namespace GB_Employees_pmmson
             set
             {
                 employees = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(employees)));
             }
         }
 
@@ -29,6 +32,7 @@ namespace GB_Employees_pmmson
             set
             {
                 departments = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(departments)));
             }
         }
 
@@ -113,6 +117,7 @@ namespace GB_Employees_pmmson
                 if (departments[i].NameDepart == oldNameDep)
                 {
                     departments[i].NameDepart = newNameDep;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(departments)));
                 }
             }
         }
@@ -126,6 +131,7 @@ namespace GB_Employees_pmmson
                     employees[i].Name = newName;
                     employees[i].Age = Int32.Parse(newAge);
                     employees[i].IdDepart = idDepart;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(employees)));
                 }
             }
         }
