@@ -1,0 +1,62 @@
+1. Создать БД с именем pmmson
+
+2. Создать таблицы
+
+CREATE TABLE [dbo].[Department] (
+    [id]         INT        IDENTITY (1, 1) NOT NULL,
+    [nameDepart] NCHAR (10) NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+CREATE TABLE [dbo].[Employee] (
+    [id]       INT        IDENTITY (1, 1) NOT NULL,
+    [FIO]      NCHAR (10) NOT NULL,
+    [Age]      INT NOT NULL,
+    [idDepart] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+3. Для заполнения тестовыми данными выполнить:
+
+insert into Department (nameDepart) values ('D.001')
+insert into Department (nameDepart) values ('D.002')
+insert into Department (nameDepart) values ('D.003')
+insert into Department (nameDepart) values ('D.004')
+insert into Department (nameDepart) values ('D.005')
+insert into Department (nameDepart) values ('D.006')
+insert into Department (nameDepart) values ('D.007')
+insert into Department (nameDepart) values ('D.008')
+insert into Department (nameDepart) values ('D.009')
+insert into Department (nameDepart) values ('D.010')
+
+insert into Employee (FIO, Age, idDepart) values ('FIO.001',21,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.002',22,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.003',25,9)
+insert into Employee (FIO, Age, idDepart) values ('FIO.004',27,8)
+insert into Employee (FIO, Age, idDepart) values ('FIO.005',23,3)
+insert into Employee (FIO, Age, idDepart) values ('FIO.006',30,5)
+insert into Employee (FIO, Age, idDepart) values ('FIO.007',31,4)
+insert into Employee (FIO, Age, idDepart) values ('FIO.008',33,7)
+insert into Employee (FIO, Age, idDepart) values ('FIO.009',32,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.010',45,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.011',34,10)
+insert into Employee (FIO, Age, idDepart) values ('FIO.012',50,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.013',43,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.014',26,7)
+insert into Employee (FIO, Age, idDepart) values ('FIO.015',47,5)
+insert into Employee (FIO, Age, idDepart) values ('FIO.016',35,3)
+insert into Employee (FIO, Age, idDepart) values ('FIO.017',40,8)
+insert into Employee (FIO, Age, idDepart) values ('FIO.018',30,9)
+insert into Employee (FIO, Age, idDepart) values ('FIO.019',25,10)
+insert into Employee (FIO, Age, idDepart) values ('FIO.020',36,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.021',26,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.022',27,3)
+insert into Employee (FIO, Age, idDepart) values ('FIO.023',36,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.024',34,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.025',32,3)
+insert into Employee (FIO, Age, idDepart) values ('FIO.026',31,2)
+insert into Employee (FIO, Age, idDepart) values ('FIO.027',23,9)
+insert into Employee (FIO, Age, idDepart) values ('FIO.028',28,9)
+insert into Employee (FIO, Age, idDepart) values ('FIO.029',39,1)
+insert into Employee (FIO, Age, idDepart) values ('FIO.030',29,4)
+

@@ -1,0 +1,16 @@
+﻿<Window x:Class="GB_Employees_pmmson.EditDep"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GB_Employees_pmmson"
+        mc:Ignorable="d"
+        Title="Редактировать департамент" Height="150" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="старое название" VerticalAlignment="Top" FontSize="15"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="новое название" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox Name="newDepName" HorizontalAlignment="Left" Height="23" Margin="129,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153" FontSize="15"/>
+        <TextBlock Name="oldDepName" HorizontalAlignment="Left" Margin="129,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="15" Width="153"/>
+        <Button Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="100,89,0,0" VerticalAlignment="Top" Width="95"/>
+    </Grid>
+</Window>
